@@ -16,8 +16,7 @@ class Cli
     end
 
     def print_companies(client)
-        puts client.companies.map{|company| company.name}.uniq
-        #binding.pry
+        client.companies.map{|company| puts company.name}.uniq
         
     end
 
@@ -34,8 +33,9 @@ class Cli
             budget = gets.chomp
             new_client = Client.create(name: name, job_description: job_description, budget: budget)
             new_company = Company.create(name: company)
+            new_project = Project.create(client_id: new_client.id, company_id: new_company.id)
             menu(new_client)
-            binding.pry
+            #binding.pry
         end
     end
 
