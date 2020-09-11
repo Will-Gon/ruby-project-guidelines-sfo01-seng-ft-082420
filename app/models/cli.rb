@@ -21,7 +21,6 @@ class Cli
         
     end
 
-
     def get_client(name)
         client = Client.find_by(name: name)
         if client
@@ -34,7 +33,9 @@ class Cli
             puts "Enter your budget"
             budget = gets.chomp
             new_client = Client.create(name: name, job_description: job_description, budget: budget)
+            new_company = Company.create(name: company)
             menu(new_client)
+            binding.pry
         end
     end
 
@@ -102,6 +103,3 @@ class Cli
     end
 
 end
-
-
-#binding.pry
